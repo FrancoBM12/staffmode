@@ -1,0 +1,30 @@
+name: StaffMode
+version: 2.0.5
+main: com.francobm.staffmode.StaffMode
+author: FrancoBM
+description: Staffmode for this server
+softdepend: [PlaceholderAPI]
+commands:
+  vanish:
+    aliases: [v, va, invi]
+  freeze:
+    description: Freeze/Unfreeze player
+    aliases: [ss, congelar]
+  staffmode:
+    description: Enable/Disable staff mode
+    aliases: [sm, staff, smode]
+  buildmode:
+    description: Enable/Disable build mode
+    aliases: [bm, build, bmode]
+  revive:
+    description: revive player
+    aliases: [rev, revivir]
+  invsee:
+    description: see inventory of player
+    aliases: [inv, invs]
+  gamemode:
+    description: change the game mode of player
+    aliases: [gm, gms, survival, gm0, gmc, creative, gm1, creativo, gma, adventure, gm2, aventura, gmspect, spectator, gm3, espectador]
+  webhook:
+    description: discord webhook
+    aliases: [wh, whook]

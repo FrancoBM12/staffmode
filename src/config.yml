@@ -1,0 +1,95 @@
+discord:
+  active: false
+  webhookUrl: "url"
+messages:
+  prefix: "&d&lStaff&f&lMode"
+  no_perms: "&cNo tienes permiso para usar este comando!"
+  target_not_online: "&cEl jugador &e%target% &cno esta conectado"
+  reload: "&aEl plugin se recargo correctamente!"
+  gamemode:
+    own: "&7Tu modo de juego ha sido cambiado a %gamemode%"
+    others: "&7El modo de juego del jugador %target% a sido cambiado a %gamemode%"
+    error: "&cEl modo %gamemode% no existe!"
+  target_op: "&cNo puedes utilizar este comando en un staff"
+  tpr:
+    error: "&cNo hay jugadores disponibles!"
+    success: "&aHas sido enviado a %player%"
+  build-mode:
+    exit:
+      title: "&c&lBuild"
+      subtitle: "&7Ahora Ya no puedes construir!"
+    join:
+      title: "&a&lBuild"
+      subtitle: "&7Ahora puedes construir nuevamente!"
+  staff-mode:
+    exit:
+      title: "&c&lStaff"
+      subtitle: "&7Saliendo del modo staff!"
+    join:
+      title: "&a&lStaff"
+      subtitle: "&7Entrando al modo staff!"
+  revive:
+    own:
+      error: "&cAún no has muerto para poder utilizar este comando!"
+      success: "&aHas revivido!"
+      staff: "&cNo puedes utilizar este comando en modo staff"
+    others:
+      error: "&cAún no ha muerto para poder utilizar este comando!"
+      success: "&aEl jugador %target% ha revivido!"
+      staff: "&cEl jugador %target% no puede revivir estando en el modo staff"
+    same_player: "&cSi quieres revivirte, usa el comando sin argumentos!"
+  freeze:
+    title: "&c&lFrozen"
+    subtitle: "&7Si te desconectas seras &aBaneado"
+    message:
+      - '&aHas sido frozeado por un miembro del staff'
+      - '&aSi te desconectas seras &2&lBaneado'
+      - '&aPor favor dirigete al discord.'
+      - '&7discord.servermc.net'
+    staff: "&aHas congelado al jugador &e%player%"
+    same_player: "&cNo te puedes congelar a ti mismo!"
+  unfreeze:
+    title: "&a&lFrozen"
+    subtitle: "&7Pasaste las pruebas exitosamente =)!"
+    staff: "&aHas descongelado al jugador &e%player%"
+  vanish:
+    own:
+      visible:
+        title: "&c&lVanish"
+        subtitle: "&fAhora estas &cVisible"
+      invisible:
+        title: "&a&lVanish"
+        subtitle: "&fAhora estas &aInvisible"
+    others:
+      visible:
+        title: "&c&l%target%"
+        subtitle: "&fAhora esta &cVisible"
+      invisible:
+        title: "&a&l%target%"
+        subtitle: "&fAhora esta &aInvisible"
+  help:
+    - '&m&l------- %prefix% &m&l-------'
+    - ''
+    - '&fInteract with your Visible state &7- &d/vanish'
+    - '&fFreeze/Unfreeze player &7- &d/freeze'
+    - '&fEnable/Disable staff mode &7- &d/staffmode'
+    - '&fShow help message &7- &d/staffmode help'
+    - '&fReload config file of the plugin &7- &d/staffmode reload'
+  webhook:
+    title: ":shield: StaffMode >> Jugador Congelado"
+    description:
+      - "¡Oh!, parece que un `miembro` de nuestro equipo acaba de detectar a un `usuario sospechoso`! Consulte los registros para obtener mas `informacion`"
+      - ""
+      - "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
+      - ":crossed_swords: **|** **Staff:**"
+      - "➥ %staff%"
+      - ""
+      - ":key: **|** **Usuario:**"
+      - "➥ %target%"
+      - ""
+      - ":earth_americas: **|** **Mundo:**"
+      - "➥ %target_world%"
+      - ""
+      - ":compass: **|** **Cordenadas:**"
+      - "➥ %target_coords_x%, %target_coords_y%, %target_coords_z%"
+      - "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"
