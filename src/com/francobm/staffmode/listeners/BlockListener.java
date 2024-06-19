@@ -20,6 +20,10 @@ public class BlockListener implements Listener {
         Player player = event.getPlayer();
         PlayerCache playerCache = plugin.getPlayerCache(player);
         if(playerCache == null) return;
+        if(playerCache.isMode()){
+            event.setCancelled(true);
+            return;
+        }
         if(playerCache.isFreeze()){
             event.setCancelled(true);
             return;
@@ -34,6 +38,10 @@ public class BlockListener implements Listener {
         Player player = event.getPlayer();
         PlayerCache playerCache = plugin.getPlayerCache(player);
         if(playerCache == null) return;
+        if(playerCache.isMode()){
+            event.setCancelled(true);
+            return;
+        }
         if(playerCache.isFreeze()){
             event.setCancelled(true);
             return;

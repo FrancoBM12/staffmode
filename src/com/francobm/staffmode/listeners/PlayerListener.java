@@ -24,7 +24,7 @@ public class PlayerListener implements Listener {
         PlayerCache playerCache = plugin.getPlayerCache(player);
         if(playerCache == null) return;
         if(playerCache.isDeath()){
-         playerCache.setDeath(false);
+            playerCache.setDeath(false);
         }
     }
 
@@ -58,10 +58,14 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
-        if(event.getEntity() == null) return;
         Player player = event.getEntity();
+        if(player.getInventory().getContents().length == 0) return;
         PlayerCache playerCache = plugin.getPlayerCache(player);
         if(playerCache == null) return;
+        if(playerCache.isFreeze()){
+            event.getDrops().clear();
+            return;
+        }
         if(playerCache.isMode()){
             event.getDrops().clear();
             return;

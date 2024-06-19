@@ -10,6 +10,7 @@ import com.francobm.staffmode.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -186,8 +187,8 @@ public class StaffManager {
             player.setFoodLevel(hungerSaved);
             player.setMaxHealth(maxHealthSaved);
             player.setHealth(healthSaved);
-            player.setFlying(flyingSaved);
             player.setAllowFlight(allowFlightSaved);
+            player.setFlying(flyingSaved);
             player.updateInventory();
             playerCache.setMode(false);
             titlePacket.sendFullTitle(player, plugin.getMessage("staff-mode.exit.title", true), plugin.getMessage("staff-mode.exit.subtitle", true));
@@ -198,12 +199,14 @@ public class StaffManager {
         player.getEquipment().clear();
         player.getEquipment().setArmorContents(null);
         player.updateInventory();
-        player.setGameMode(GameMode.CREATIVE);
+        player.setGameMode(GameMode.ADVENTURE);
         player.setExp(0);
         player.setLevel(0);
         player.setFoodLevel(20);
         player.setMaxHealth(20);
         player.setHealth(20);
+        player.setAllowFlight(true);
+        player.setFlying(true);
         PlayerUtil.setItemsStaff(player);
         playerCache.setMode(true);
         titlePacket.sendFullTitle(player, plugin.getMessage("staff-mode.join.title", true), plugin.getMessage("staff-mode.join.subtitle", true));
@@ -327,6 +330,21 @@ public class StaffManager {
         player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 4, false, false));
         titlePacket.sendFullTitle(player, plugin.getMessage("vanish.own.invisible.title", true), plugin.getMessage("vanish.own.invisible.subtitle", true));
         playerCache.setVanish(true);
+    }
+
+    public void mount(Player player, Entity entity){
+        if(!player.hasPermission("staffmode.mount")){
+            player.sendMessage(plugin.getMessage("no_perms", true));
+            return;
+        }
+        PlayerCache playerCache = plugin.getPlayerCache(player);
+        if(playerCache == null) return;
+        if(entity.setPassenger(player)) {
+            if (entity instanceof Player) {
+                titlePacket.sendFullTitle((Player) entity, plugin.getMessage("mount.target.title", true), plugin.getMessage("mount.target.subtitle", true).replace("%player%", player.getName()));
+            }
+            titlePacket.sendFullTitle(player, plugin.getMessage("mount.player.title", true), plugin.getMessage("mount.player.subtitle", true).replace("%target%", entity.getName()));
+        }
     }
 
     public void sendDiscordWebhook(ConsoleCommandSender staff, Player target){

@@ -4,13 +4,9 @@ import com.francobm.staffmode.StaffMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.entity.Player;
-
-import java.io.IOException;
 
 public class WebhookCommand implements CommandExecutor {
-    private StaffMode plugin;
+    private final StaffMode plugin;
 
     public WebhookCommand(StaffMode plugin){
         this.plugin = plugin;

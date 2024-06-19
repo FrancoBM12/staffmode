@@ -45,6 +45,11 @@ public class PlayerUtil {
         itemMeta.setDisplayName(Utils.ChatColor("&d&lInvsee"));
         itemStack.setItemMeta(itemMeta);
         player.getInventory().setItem(4, itemStack);
+        itemStack = new ItemStack(Material.LEASH, 1);
+        itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(Utils.ChatColor("&6&lMount"));
+        itemStack.setItemMeta(itemMeta);
+        player.getInventory().setItem(7, itemStack);
         itemStack = new ItemStack(Material.WATCH, 1);
         itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(Utils.ChatColor("&3&lTP Random"));

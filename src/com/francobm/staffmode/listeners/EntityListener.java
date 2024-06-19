@@ -26,14 +26,14 @@ public class EntityListener implements Listener {
     public void PlayerInteract(PlayerInteractEvent event){
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
-        if(item == null || item.getType() == Material.AIR || !item.getItemMeta().hasDisplayName()) return;
         PlayerCache playerCache = plugin.getPlayerCache(player);
-        ItemStack itemStack;
-        ItemMeta itemMeta;
         if(playerCache.isFreeze()){
             event.setCancelled(true);
             return;
         }
+        if(item == null || item.getType() == Material.AIR || !item.getItemMeta().hasDisplayName()) return;
+        ItemStack itemStack;
+        ItemMeta itemMeta;
         if(ChatColor.stripColor(item.getItemMeta().getDisplayName()).contains("Vanish")){
             event.setCancelled(true);
             plugin.getStaffManager().vanish(player);
@@ -58,28 +58,43 @@ public class EntityListener implements Listener {
     }
 
     @EventHandler
-    public void EntityDamageByEntity(EntityDamageByEntityEvent event){
-        if(event.getDamager() instanceof Player){
-            Player damager = (Player) event.getDamager();
-            PlayerCache playerCache = plugin.getPlayerCache(damager);
+    public void EntityDamage(EntityDamageEvent event){
+        if(event.getEntity() instanceof Player){
+            Player player = (Player) event.getEntity();
+            PlayerCache playerCache = plugin.getPlayerCache(player);
             if(playerCache == null) return;
             if(playerCache.isFreeze()){
+                event.setCancelled(true);
+                return;
+            }
+            if(playerCache.isMode()){
                 event.setCancelled(true);
             }
         }
     }
+
     @EventHandler
-    public void DamageEntity(EntityDamageEvent event){
-        if(!(event.getEntity() instanceof Player)) return;
-        Player player = (Player) event.getEntity();
-        PlayerCache playerCache = plugin.getPlayerCache(player);
-        if(playerCache == null) return;
-        if(playerCache.isFreeze()){
-            event.setCancelled(true);
-            return;
+    public void EntityDamageByEntity(EntityDamageByEntityEvent event){
+        if(event.getEntity() instanceof Player){
+            Player player = (Player) event.getEntity();
+            PlayerCache playerCache = plugin.getPlayerCache(player);
+            if(playerCache == null) return;
+            if(playerCache.isFreeze()){
+                event.setCancelled(true);
+                return;
+            }
+            if(playerCache.isMode()){
+                event.setCancelled(true);
+                return;
+            }
         }
-        if(playerCache.isMode()){
-            event.setCancelled(true);
+        if(event.getDamager() instanceof Player){
+            Player player = (Player) event.getDamager();
+            PlayerCache playerCache = plugin.getPlayerCache(player);
+            if(playerCache == null) return;
+            if(playerCache.isFreeze()){
+                event.setCancelled(true);
+            }
         }
     }
     @EventHandler
@@ -103,6 +118,10 @@ public class EntityListener implements Listener {
                     Player target = (Player) event.getRightClicked();
                     plugin.getStaffManager().freeze(player, target);
                 }
+                break;
+            case "mount":
+                event.setCancelled(true);
+                plugin.getStaffManager().mount(player, event.getRightClicked());
                 break;
         }
     }

@@ -6,11 +6,38 @@ messages:
   no_perms: "&cNo tienes permiso para usar este comando!"
   target_not_online: "&cEl jugador &e%target% &cno esta conectado"
   reload: "&aEl plugin se recargo correctamente!"
+  target_op: "&cNo puedes utilizar este comando en un staff"
+  inventory:
+    health_item:
+      name: "&cVida"
+      item: APPLE
+      lore:
+        - '&eMax: &a%max_health%'
+        - '&eCurrent: &b%current_health%'
+        - '&eFood: &b%current_food%'
+    player_data_item:
+      name: "&6Datos"
+      item: BOOK
+      lore:
+        - '&eStaffMode: &9%mode%'
+        - '&eFreeze: &9%freeze%'
+        - '&eBuild: &9%build%'
+        - '&eVanish: &9%vanish%'
+    potions_item:
+      name: "&9Efectos"
+      item: POTION
+      format: '&7%potion_name% %potion_level%: &9%potion_duration%'
+  mount:
+    target:
+      title: "&6&lMount"
+      subtitle: "&e%player% &7te ha montado"
+    player:
+      title: "&6&lMount"
+      subtitle: "&7Has montado a &e%target%"
   gamemode:
     own: "&7Tu modo de juego ha sido cambiado a %gamemode%"
     others: "&7El modo de juego del jugador %target% a sido cambiado a %gamemode%"
     error: "&cEl modo %gamemode% no existe!"
-  target_op: "&cNo puedes utilizar este comando en un staff"
   tpr:
     error: "&cNo hay jugadores disponibles!"
     success: "&aHas sido enviado a %player%"
